@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bravabook Lite</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="w3-light-grey">
+  <header class="w3-container w3-blue w3-padding-16">
+    <h1 class="w3-margin-0">Bravabook Lite</h1>
+    <p class="w3-margin-0">Reserva alojamientos de forma sencilla</p>
+  </header>
+
+  <div class="w3-content" style="max-width:1100px">
+    <!-- Búsqueda -->
+    <div class="w3-card w3-white w3-padding w3-margin-top">
+      <form method="GET" action="/" class="w3-row-padding">
+        <div class="w3-third w3-margin-bottom">
+          <label>Ciudad</label>
+          <input class="w3-input w3-border" type="text" name="city" value="<%= (query && query.city) || '' %>" placeholder="Barcelona, Girona...">
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <label>Huéspedes</label>
+          <input class="w3-input w3-border" type="number" name="guests" min="1" value="<%= (query && query.guests) || '' %>">
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <label>Check-in</label>
+          <input class="w3-input w3-border" type="date" name="checkIn" value="<%= (query && query.checkIn) || '' %>">
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <label>Check-out</label>
+          <input class="w3-input w3-border" type="date" name="checkOut" value="<%= (query && query.checkOut) || '' %>">
+        </div>
+        <div class="w3-third w3-margin-bottom w3-padding-large">
+          <button class="w3-button w3-blue w3-round-large w3-block" type="submit">Buscar</button>
+        </div>
+        <div class="w3-third w3-margin-bottom w3-padding-large">
+          <a class="w3-button w3-white w3-border w3-round-large w3-block" href="/admin/new">Añadir alojamiento</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Listado de alojamientos -->
+    <div class="w3-row-padding w3-margin-top">
+      <% if (!properties || properties.length === 0) { %>
+        <div class="w3-panel w3-pale-yellow w3-border">No hay alojamientos para los filtros seleccionados.</div>
+      <% } %>
+
+      <% properties.forEach(p => { %>
+        <div class="w3-third w3-margin-bottom">
+          <div class="w3-card-4">
+            <img src="<%= (p.images && p.images[0]) || 'https://images.unsplash.com/photo-1505691723518-36a5ac3b2d42?q=80&w=1200&auto=format&fit=crop' %>" alt="<%= p.name %>" style="width:100%; height:200px; object-fit:cover"/>
+            <div class="w3-container">
+              <h3 class="w3-margin-top-small"><%= p.name %></h3>
+              <p class="w3-opacity"><%= p.city %></p>
+              <p class="w3-small">Desde <strong>€<%= p.pricePerNight %></strong>/noche · Máx <%= p.maxGuests %> huéspedes</p>
+              <p><a class="w3-button w3-blue w3-round-large" href="/property/<%= p._id %>">Ver detalles</a></p>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <footer class="w3-center w3-padding-16 w3-small">Copyright © 2025 Bravabook - Iapalucci Jonathan</footer>
+</body>
+</html>

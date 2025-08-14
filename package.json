@@ -1,0 +1,33 @@
+{
+  "name": "bravabook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "ejs",
+    "mongodb",
+    "mongoose",
+    "reservas",
+    "alojamientos"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongodb": "^6.18.0",
+    "mongoose": "^8.17.1",
+    "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

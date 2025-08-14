@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nuevo alojamiento – Bravabook Lite</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+</head>
+<body class="w3-light-grey">
+  <div class="w3-content" style="max-width:800px">
+    <div class="w3-card w3-white w3-padding w3-margin-top">
+      <h3>Nuevo alojamiento</h3>
+      <form method="POST" action="/admin">
+        <label>Nombre</label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="name" required>
+
+        <label>Ciudad</label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="city" required>
+
+        <label>Dirección</label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="address">
+
+        <label>Descripción</label>
+        <textarea class="w3-input w3-border w3-margin-bottom" name="description"></textarea>
+
+        <div class="w3-row-padding" style="padding:0">
+          <div class="w3-half">
+            <label>Precio por noche (€)</label>
+            <input class="w3-input w3-border w3-margin-bottom" type="number" name="pricePerNight" min="0" step="1" required>
+          </div>
+          <div class="w3-half">
+            <label>Máx huéspedes</label>
+            <input class="w3-input w3-border w3-margin-bottom" type="number" name="maxGuests" min="1" required>
+          </div>
+        </div>
+
+        <label>Imágenes (URLs separadas por comas)</label>
+        <input class="w3-input w3-border w3-margin-bottom" type="text" name="images" placeholder="https://... , https://...">
+
+        <button class="w3-button w3-blue w3-round-large" type="submit">Guardar</button>
+        <a class="w3-button w3-white w3-border w3-round-large" href="/">Cancelar</a>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

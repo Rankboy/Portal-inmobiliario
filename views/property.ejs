@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= property.name %> – Bravabook Lite</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="w3-light-grey">
+  <header class="w3-container w3-blue w3-padding-16">
+    <h2 class="w3-margin-0"><%= property.name %></h2>
+    <p class="w3-margin-0"><%= property.city %></p>
+  </header>
+
+  <div class="w3-content" style="max-width:1000px">
+    <div class="w3-row-padding w3-margin-top">
+      <div class="w3-half">
+        <img src="<%= (property.images && property.images[0]) || 'https://images.unsplash.com/photo-1505691723518-36a5ac3b2d42?q=80&w=1200&auto=format&fit=crop' %>" alt="<%= property.name %>" style="width:100%; height:320px; object-fit:cover"/>
+        <p class="w3-margin-top"><%= property.description || 'Alojamiento cómodo y bien ubicado.' %></p>
+        <p class="w3-small w3-text-gray">Dirección: <%= property.address || '—' %></p>
+      </div>
+      <div class="w3-half">
+        <div class="w3-card w3-white w3-padding">
+          <h3>Reservar</h3>
+          <p class="w3-small">Precio: <strong>€<%= property.pricePerNight %></strong>/noche · Máx <%= property.maxGuests %> huéspedes</p>
+          <form method="POST" action="/book/<%= property._id %>">
+            <label>Nombre</label>
+            <input class="w3-input w3-border w3-margin-bottom" type="text" name="guestName" required>
+
+            <label>Email</label>
+            <input class="w3-input w3-border w3-margin-bottom" type="email" name="email" required>
+
+            <label>Teléfono</label>
+            <input class="w3-input w3-border w3-margin-bottom" type="text" name="phone">
+
+            <div class="w3-row-padding" style="padding:0">
+              <div class="w3-half">
+                <label>Check-in</label>
+                <input class="w3-input w3-border w3-margin-bottom" type="date" name="checkIn" required>
+              </div>
+              <div class="w3-half">
+                <label>Check-out</label>
+                <input class="w3-input w3-border w3-margin-bottom" type="date" name="checkOut" required>
+              </div>
+            </div>
+
+            <label>Huéspedes</label>
+            <input class="w3-input w3-border w3-margin-bottom" type="number" name="guests" min="1" max="<%= property.maxGuests %>" required>
+
+            <button class="w3-button w3-blue w3-round-large w3-block" type="submit">Confirmar reserva</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <p class="w3-center w3-margin"><a class="w3-button w3-white w3-border w3-round-large" href="/">← Volver</a></p>
+  </div>
+</body>
+</html>
