@@ -34,4 +34,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Eliminar alojamiento
+router.post('/delete/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Property.findByIdAndDelete(id);
+    res.redirect('/');
+  } catch (err) {
+    console.error(err);
+    res.status(400).send('No se pudo eliminar el alojamiento');
+  }
+});
+
 module.exports = router;
