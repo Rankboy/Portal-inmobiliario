@@ -57,6 +57,9 @@
               <p class="w3-opacity"><%= p.city %></p>
               <p class="w3-small">Desde <strong>€<%= p.pricePerNight %></strong>/noche · Máx <%= p.maxGuests %> huéspedes</p>
               <p><a class="w3-button w3-blue w3-round-large" href="/property/<%= p._id %>">Ver detalles</a></p>
+              <form action="/admin/delete/<%= p._id %>" method="POST" style="display:inline;">
+                <button type="submit" class="w3-button w3-red w3-round-large">Eliminar</button>
+              </form>
             </div>
           </div>
         </div>
